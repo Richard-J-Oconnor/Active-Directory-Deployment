@@ -1,1 +1,1 @@
-<h1>Active Directory deployment in the Cloud (Azure)</h1>
+<h1>Active Directory deployed in the Cloud (Azure)</h1>
