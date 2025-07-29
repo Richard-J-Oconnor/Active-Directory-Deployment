@@ -22,7 +22,7 @@ This guide outlines the implementation of Active Directory within Azure Virtual 
 - Create a Resource group
 - Create a Virtual Network
 - Create the Domain Controller and Client Virtual Machines
-- Set the Domain Controller's private IP address to static
+- Set the Domain Controller's private IP address to Static
 - Set the Client VM's DNS settings to the DC's private IP
 - Use Remote Desktop to access our DC and install Active Directory Domain Services
 - Promote the server to a domain controller
