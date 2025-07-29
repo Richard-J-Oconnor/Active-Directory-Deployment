@@ -90,7 +90,7 @@ Select, Add a new forest. Enter a name in the Root domain name. Then click "next
 Once the check is complete, click install. (Note: This will restart the VM, so the connection with the remote desktop will end.) <br/>
 <img width="753" height="555" alt="image" src="https://github.com/user-attachments/assets/cd6bc295-90ac-4934-9b59-8eafb84f3e65" />
 
-Reconnect to the Domain Controller VM. The username will be (domain\username), i.e "mydomain.com\labuser" in this instance. <br/>
+Reconnect to the Domain Controller VM. The username will be (domain\username), i.e, "mydomain.com\labuser" in this instance. <br/>
 
 Upon successful login, open "Active Directory Users and Computers". Right-click on the domain to create a new Organizational Unit. <br/>
 <img width="637" height="528" alt="image" src="https://github.com/user-attachments/assets/d8242f84-1dd7-4183-a158-c729c5ddea12" /> <br/>
