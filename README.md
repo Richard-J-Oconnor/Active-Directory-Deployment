@@ -27,6 +27,9 @@ This guide outlines the implementaiton of Active Directory within Azure Virtual 
 - Set the Client VM's DNS settings to the DC's private IP
 - Use Remote Desktop to access our DC and install Active Directory Domain Services
 - Promote the server to a domain controller
+- Create a domain admin user inside an organizational unit
+- Join the client VM to the domain
+- Allow non-admin users to login to client VM
 
 <h2>Deployment and Configuration Steps</h2>
 Search for Resource Groups or use the portal menu to navigate to Resource Groups.
@@ -80,5 +83,33 @@ Once you reach the confirmation page, check the top box and click install to add
 <img width="777" height="552" alt="image" src="https://github.com/user-attachments/assets/4ca3e0e9-22b9-4506-a603-78ade884effb" /> <br/>
 
 Once the installation is complete, click on the flag and select "promote this server to a domain controller." <br/>
-<img width="2417" height="383" alt="image" src="https://github.com/user-attachments/assets/555d6b10-22f1-425c-93a0-e9de499f65e0" />
+<img width="2417" height="383" alt="image" src="https://github.com/user-attachments/assets/555d6b10-22f1-425c-93a0-e9de499f65e0" /> <br/>
 
+Select, Add a new forest. Enter a name in the Root domain name. Then click "next" for the remaining steps until you reach the Prerequisites Check tab. <br/>
+<img width="753" height="551" alt="image" src="https://github.com/user-attachments/assets/a1f1a088-fa3f-4297-afee-4abfebb372ff" /> <br/>
+
+Once the check is complete, click install. (Note: This will restart the VM so the connection wtih remote desktop will end) <br/>
+<img width="753" height="555" alt="image" src="https://github.com/user-attachments/assets/cd6bc295-90ac-4934-9b59-8eafb84f3e65" />
+
+Reconnect to the Domain Controller VM. The username will (domain\username) i.e "mydomain.com\labuser" in this instance. <br/>
+
+Upon successful login, open "Active Directory Users and Computers". Right-click on the domain to create a new Organizational Unit. <br/>
+<img width="637" height="528" alt="image" src="https://github.com/user-attachments/assets/d8242f84-1dd7-4183-a158-c729c5ddea12" /> <br/>
+
+Right-click on the organizational unit from the previous step to create a user. Fill in the information for the user. (name, username, etc.) <br/>
+<img width="434" height="371" alt="image" src="https://github.com/user-attachments/assets/4aa5245f-592c-44c3-86b7-21084a1bd08c" /> <br/>
+
+Right-click on the user. Select "properties", followed by "Member Of", and click "Add". Then enter Domain admins (click check names to make sure the built-in group is selected). Then apply the settings.
+<img width="866" height="598" alt="image" src="https://github.com/user-attachments/assets/30c490a0-6889-46a0-bebe-d261bc176c9a" /> <br/>
+
+Now log in to the client VM using the local admin. Navigate to Windows settings. Go to the about page and click on "Rename this PC (advanced)". Under the "Computer Name" tab, click "Change". Under "Member of", select "Domain" then enter the domain name. Then, enter the admin user credentials. <br/>
+<img width="1237" height="1006" alt="image" src="https://github.com/user-attachments/assets/34f50b48-5fa9-452a-81ab-817ae1410b9d" /> <br/>
+
+This pop-up should appear if successful. Then restart the machine.<br/>
+<img width="350" height="185" alt="image" src="https://github.com/user-attachments/assets/d0d1785a-7bb6-46b3-9e03-1cf46017e266" /> <br/>
+
+To confirm the client is joined to the domain, log in to the domain controller under the admin account. Open "Active Directory Users and Computers". Click on "computer" to check if the client machine is joined. <br/>
+<img width="790" height="551" alt="image" src="https://github.com/user-attachments/assets/828a6cdf-1164-4dc6-8a61-2a4ba43b9dad" />
+
+Now we will configure the settings to allow other users access to the client VM. Log in to the client VM with the admin credentials. Go to the Windows settings under Remote Desktop. Click on the line under "User Accounts". Click "Add". Then enter "domain users" and click "Check Names". And confirm it. This will allow all users in the domain to use the client VM remotely. <br/>
+<img width="919" height="1017" alt="image" src="https://github.com/user-attachments/assets/84a7b11f-555d-406a-990f-191bfcaa50e1" />
