@@ -46,7 +46,7 @@ Search for Virtual Networks or use the portal menu to navigate to Virtual Networ
 In the basics tab, select the Resource Group from the previous step. Give your Virtual Network a name and keep the region the same as the last step. Then click Review and create, and press the create button to make the virtual network. (Note: This will take some time for Azure to make.) <br/>
 <img width="849" height="707" alt="image" src="https://github.com/user-attachments/assets/23cfca5e-d330-4db7-a3e5-656831982ead" /> <br/>
 
-Search for Virtual Machines or use the portal menu to navigate to Virtual Machines. Then click create, and select virtual machine.
+Search for Virtual Machines or use the portal menu to navigate to Virtual Machines. Then click create, and select virtual machine. <br/>
 <img width="707" height="662" alt="image" src="https://github.com/user-attachments/assets/a7dff7f2-bd61-4a45-9c77-d0d7fe4ed881" /> <br/>
 
 To create our Domain Controller virtual machine, in the basics tab, select the resource group that was made earlier. Give a name to the VM. Select the same region as the virtual network. Under the Image option, select Windows Server 2022. Select a size that suits your needs (Note: The choice you make can be determined by the level of processing power you want and your budget.) Then create a username and password for the VM.
