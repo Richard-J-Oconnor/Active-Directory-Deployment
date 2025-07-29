@@ -3,7 +3,7 @@
 </p>
 
 <h1>Active Directory deployed in the Cloud (Azure)</h1>
-This guide outlines the implementaiton of Active Directory within Azure Virtual Machines.<br/>
+This guide outlines the implementation of Active Directory within Azure Virtual Machines.<br/>
 
 
 <h2>Environments and Technologies Used</h2>
@@ -22,13 +22,13 @@ This guide outlines the implementaiton of Active Directory within Azure Virtual 
 - Create a Resource group
 - Create a Virtual Network
 - Create the Domain Controller and Client Virtual Machines
-- Set the Domain Controllers private IP address to static
+- Set the Domain Controller's private IP address to static
 - Set the Client VM's DNS settings to the DC's private IP
 - Use Remote Desktop to access our DC and install Active Directory Domain Services
 - Promote the server to a domain controller
 - Create a domain admin user inside an organizational unit
 - Join the client VM to the domain
-- Allow non-admin users to login to client VM
+- Allow non-admin users to log in to the client VM
 
 <h2>Deployment and Configuration Steps</h2>
 Search for Resource Groups or use the portal menu to navigate to Resource Groups.
@@ -37,7 +37,7 @@ Search for Resource Groups or use the portal menu to navigate to Resource Groups
 Once you are in Resource Groups, click on create. Then give a name to the Resource Group and select the region you would like to use. (Note: Use the same region for the other parts of the demonstration, as using a different one will prevent the virtual machines from communicating properly. This is more important for the future steps.) <br/>
 <img width="749" height="373" alt="image" src="https://github.com/user-attachments/assets/c227d747-5e02-42c9-b325-d2b8c971ee23" /> <br/>
 
-Finally, click Review and Create. Press the create button on the bottom. (Note: May take Azure a few to deploy it.)<br/>
+Finally, click Review and Create. Press the create button at the bottom. (Note: This may take Azure a few moments to deploy.)<br/>
 Confirm the Resource Group is deployed. 
 <img width="2487" height="136" alt="image" src="https://github.com/user-attachments/assets/2c816940-8008-4d4e-9548-769a50e80c07" /> <br/>
 
@@ -54,7 +54,7 @@ To create our Domain Controller virtual machine, in the basics tab, select the r
 In the networking tab, select the Virtual Network that was made previously.
 <img width="773" height="218" alt="image" src="https://github.com/user-attachments/assets/40f41d50-e9bc-483a-9d8c-3b5852900eef" /> <br/>
 
-Then Review and create your virtual machine. <br/>
+Then, review and create your virtual machine. <br/>
 For the client VM, follow the same steps as the other virtual machine, except under the image option, select Windows 10 Pro version 22H2, and check the licensing box at the bottom. Then create the virtual machine. <br/>
 
 To set the Domain controller's IP address to static, we select our virtual machine. Then select Networking, followed by Network settings, and then click on the Network interface/IP configuration to access the virtual NIC settings.
@@ -87,10 +87,10 @@ Once the installation is complete, click on the flag and select "promote this se
 Select, Add a new forest. Enter a name in the Root domain name. Then click "next" for the remaining steps until you reach the Prerequisites Check tab. <br/>
 <img width="753" height="551" alt="image" src="https://github.com/user-attachments/assets/a1f1a088-fa3f-4297-afee-4abfebb372ff" /> <br/>
 
-Once the check is complete, click install. (Note: This will restart the VM so the connection wtih remote desktop will end) <br/>
+Once the check is complete, click install. (Note: This will restart the VM, so the connection with the remote desktop will end.) <br/>
 <img width="753" height="555" alt="image" src="https://github.com/user-attachments/assets/cd6bc295-90ac-4934-9b59-8eafb84f3e65" />
 
-Reconnect to the Domain Controller VM. The username will (domain\username) i.e "mydomain.com\labuser" in this instance. <br/>
+Reconnect to the Domain Controller VM. The username will be (domain\username), i.e "mydomain.com\labuser" in this instance. <br/>
 
 Upon successful login, open "Active Directory Users and Computers". Right-click on the domain to create a new Organizational Unit. <br/>
 <img width="637" height="528" alt="image" src="https://github.com/user-attachments/assets/d8242f84-1dd7-4183-a158-c729c5ddea12" /> <br/>
@@ -101,7 +101,7 @@ Right-click on the organizational unit from the previous step to create a user. 
 Right-click on the user. Select "properties", followed by "Member Of", and click "Add". Then enter Domain admins (click check names to make sure the built-in group is selected). Then apply the settings.
 <img width="866" height="598" alt="image" src="https://github.com/user-attachments/assets/30c490a0-6889-46a0-bebe-d261bc176c9a" /> <br/>
 
-Now log in to the client VM using the local admin. Navigate to Windows settings. Go to the about page and click on "Rename this PC (advanced)". Under the "Computer Name" tab, click "Change". Under "Member of", select "Domain" then enter the domain name. Then, enter the admin user credentials. <br/>
+Now log in to the client VM using the local admin. Navigate to Windows settings. Go to the about page and click on "Rename this PC (advanced)". Under the "Computer Name" tab, click "Change". Under "Member of", select "Domain", then enter the domain name. Then, enter the admin user credentials. <br/>
 <img width="1237" height="1006" alt="image" src="https://github.com/user-attachments/assets/34f50b48-5fa9-452a-81ab-817ae1410b9d" /> <br/>
 
 This pop-up should appear if successful. Then restart the machine.<br/>
